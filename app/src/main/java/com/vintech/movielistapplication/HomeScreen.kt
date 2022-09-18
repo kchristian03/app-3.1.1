@@ -3,23 +3,24 @@ package com.vintech.movielistapplication
 import Adapter.ListDataRVAdapter
 import Database.GlobarVar
 import Interface.cardListener
-import Model.Film
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.vintech.movielistapplication.databinding.ActivityHomeScreenBinding
 
 class HomeScreen : AppCompatActivity(), cardListener {
 
     private lateinit var viewBinding: ActivityHomeScreenBinding
-    private val listDataFilm = ArrayList<Film>()
     private val adapter = ListDataRVAdapter(GlobarVar.listDataFilm, this)
     private var jml: Int = 0
 
@@ -64,6 +65,42 @@ class HomeScreen : AppCompatActivity(), cardListener {
             putExtra("position", position)
         }
         startActivity(myIntent)
+    }
+
+    override fun onCardClick1(isEdit: Boolean, position: Int) {
+        if (!isEdit) {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Delete movie")
+            builder.setMessage("Are you sure you want to delete this movie?")
+
+
+            builder.setPositiveButton(android.R.string.yes) { function, which ->
+                val snackbar = Snackbar.make(
+                    viewBinding.listDataRV,
+                    "Movie Deleted",
+                    Snackbar.LENGTH_INDEFINITE
+                )
+                snackbar.setAction("Dismiss") { snackbar.dismiss() }
+                snackbar.setActionTextColor(Color.WHITE)
+                snackbar.setBackgroundTint(Color.GRAY)
+                snackbar.show()
+                GlobarVar.listDataFilm.removeAt(position)
+                adapter.notifyDataSetChanged()
+            }
+
+            builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                Toast.makeText(
+                    applicationContext,
+                    android.R.string.no, Toast.LENGTH_SHORT
+                ).show()
+            }
+            builder.show()
+
+
+        } else {
+            val intent = Intent(this, AddForm::class.java).putExtra("position", position)
+            startActivity(intent)
+        }
     }
 
     private fun checkPermissions() {

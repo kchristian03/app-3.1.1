@@ -25,6 +25,13 @@ class ListDataRVAdapter(val ListFilm: ArrayList<Film>, val cardListener: cardLis
                 binding.imageView.setImageURI(Uri.parse(data.imageUri))
             }
 
+            binding.imageButtonDelete.setOnClickListener {
+                cardListener1.onCardClick1(false, position)
+            }
+            binding.imageButtonEdit.setOnClickListener {
+                cardListener1.onCardClick1(true, position)
+            }
+
             itemView.setOnClickListener {
                 cardListener1.onCardClick(adapterPosition)
             }

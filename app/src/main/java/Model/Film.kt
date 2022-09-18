@@ -6,12 +6,14 @@ import android.os.Parcelable
 class Film(
     var title: String?,
     var rating: String?,
-    var genre: Int?
+    var genre: Int?,
+    var imageuri: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
-        parcel.readValue(Int::class.java.classLoader) as? Int
+        parcel.readInt(),
+        parcel.readString()
     )
 
     var imageUri: String = ""
@@ -20,6 +22,7 @@ class Film(
         parcel.writeString(title)
         parcel.writeString(rating)
         parcel.writeValue(genre)
+        parcel.writeString(imageuri)
     }
 
     override fun describeContents(): Int {

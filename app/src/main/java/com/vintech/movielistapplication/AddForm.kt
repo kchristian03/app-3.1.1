@@ -17,6 +17,23 @@ class AddForm : AppCompatActivity() {
     private var position = -1
     var image: String = ""
 
+    private val GetResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {   // APLIKASI GALLERY SUKSES MENDAPATKAN IMAGE
+                val uri = it.data?.data
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    if (uri != null) {
+                        baseContext.contentResolver.takePersistableUriPermission(
+                            uri,
+                            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                        )
+                    }
+                }// GET PATH TO IMAGE FROM GALLEY
+                viewBinding.imageView.setImageURI(uri)  // MENAMPILKAN DI IMAGE VIEW
+                image = uri.toString()
+            }
+        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viewBinding = ActivityFormBinding.inflate(layoutInflater)
@@ -42,22 +59,7 @@ class AddForm : AppCompatActivity() {
 
     }
 
-    private val GetResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == RESULT_OK) {   // APLIKASI GALLERY SUKSES MENDAPATKAN IMAGE
-                val uri = it.data?.data
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    if (uri != null) {
-                        baseContext.contentResolver.takePersistableUriPermission(
-                            uri,
-                            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                        )
-                    }
-                }// GET PATH TO IMAGE FROM GALLEY
-                viewBinding.imageView.setImageURI(uri)  // MENAMPILKAN DI IMAGE VIEW
-                image = uri.toString()
-            }
-        }
+
 
 
     private fun Listener() {
@@ -72,7 +74,7 @@ class AddForm : AppCompatActivity() {
             var rating = viewBinding.ratingTextInputLayout.editText?.text.toString().trim()
             var genre = 0
 
-            film = Film(title, rating, genre)
+            film = Film(title, rating, genre, image)
             checker()
         }
         viewBinding.toolbarForm.getChildAt(1).setOnClickListener {
