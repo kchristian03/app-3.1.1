@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Animal List</string>
+    <string name="movie_list">Animal List</string>
+    <string name="add">Add</string>
+    <string name="title">~title</string>
+    <string name="splash_screen">splash screen</string>
+
+    <!--    add area-->
+    <string name="add_button">Add</string>
+    <string name="add_movie_title">Add Animal</string>
+
+    <!--    edit area-->
+    <string name="save_button">Save</string>
+    <string name="edit_movie_title">Edit Animal</string>
+
+    <!--    detail area-->
+    <string name="delete_button">Delete</string>
+    <string name="detail_movie_title">Animal Detail</string>
+
+    <!--    Form area-->
+    <string name="back_button">back</string>
+
+    <string name="image_poster">image poster</string>
+    <string name="title_text">Nama Hewan</string>
+    <string name="rating_text">Jenis Hewan</string>
+    <string name="genre_text">Usia Hewan</string>
+    <string name="production_company_text">Production Company</string>
+    <string name="synopsis_text">Synopsis</string>
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardData"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_margin="12dp"
+        app:cardBackgroundColor="#353434"
+        app:cardCornerRadius="24dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView_Nama"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Nama"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+            <TextView
+                android:id="@+id/textView_Jenis"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Jenis"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView_Nama"
+                app:layout_constraintStart_toStartOf="@+id/textView_Nama"
+                app:layout_constraintTop_toBottomOf="@+id/textView_Nama" />
+
+            <TextView
+                android:id="@+id/textView_UsiaName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Usia: "
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/textView_Jenis"
+                app:layout_constraintTop_toBottomOf="@+id/textView_Jenis" />
+
+            <TextView
+                android:id="@+id/textView_Usia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="000"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_UsiaName"
+                app:layout_constraintStart_toEndOf="@+id/textView_UsiaName"
+                app:layout_constraintTop_toTopOf="@+id/textView_UsiaName" />
+
+            <ImageButton
+                android:id="@+id/imageButton_Delete"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#F44336"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton_Edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton_Edit"
+                app:layout_constraintTop_toTopOf="@+id/imageButton_Edit"
+                app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+            <ImageButton
+                android:id="@+id/imageButton_Edit"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#009688"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                app:layout_constraintStart_toStartOf="@+id/textView_UsiaName"
+                app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="18dp"
+                app:cardCornerRadius="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_baseline_image_24" />
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
